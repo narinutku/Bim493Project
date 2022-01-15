@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+          BackgroundColor="IndianRed"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="Bim493Project.TopList">
+    <ContentPage.Content>
+        <StackLayout  Orientation="Vertical"
+             VerticalOptions="Fill"
+             HorizontalOptions="StartAndExpand">
+            <pancakeView:PancakeView
+                Grid.Row="2"
+                Margin="30,5"
+                Padding="10"
+                BackgroundColor="Black"
+           
+                CornerRadius="10"
+                HeightRequest="48">
+
+                <Label
+                    BackgroundColor="Black"
+                    x:Name="entry_for_search_movie"
+                HorizontalTextAlignment="Center"
+                    Text="Popular of Week" FontSize="32"
+                    TextColor="White" />
+            </pancakeView:PancakeView>
+           
+            <ListView x:Name="lst_top_list" ItemsSource="{Binding .}" Margin="10,10,10,10" HasUnevenRows="True" HeightRequest="-1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Frame CornerRadius="40"  BackgroundColor="Wheat" HasShadow="True" >
+
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition Width="250"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding PosterPath}" 
+                                       Aspect="AspectFill"
+                                       Grid.Row="0"
+                                       Grid.ColumnSpan="2"
+                                       Grid.Column="0"
+                                       
+                                          />
+                                    <Label Text="Name:"
+                                       Grid.Row="1"
+                                               Grid.Column="0"
+                                                FontSize="18"
+                                               FontAttributes="Bold"/>
+                                    <Label Text="{Binding Title}"
+                                             Grid.Column="1"
+                                                FontSize="22"
+                                               HorizontalOptions="Center"
+                                       Grid.Row="1"  FontAttributes="Bold"/>
+                                    <Label Text="Overview:"
+                                               
+                                       Grid.Row="2" FontSize="18"
+                                       Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Overview}"
+                                       Grid.Row="2"
+                                          
+                                             FontSize="18"
+                                       Grid.Column="1" FontAttributes="Italic"/>
+                                    <Label Text="Release Year:"
+                                       Grid.Row="3"
+                                                FontSize="18"
+                                               
+                                       Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label Text="{Binding ReleaseDate.Year}"
+                                       Grid.Row="3"
+                                            FontSize="18"
+                                           
+                                       Grid.Column="1" FontAttributes="Italic"/>
+                                    <Label Text="Vote Average:"
+                                       Grid.Row="4"
+                                                FontSize="18"
+                                               
+                                       Grid.Column="0" FontAttributes="Bold"/>
+                                    <Label Text="{Binding VoteAverage}"
+                                       Grid.Row="4"
+                                            FontSize="18"
+                                           
+                                       Grid.Column="1" FontAttributes="Italic"/>
+                                </Grid>
+
+
+                            </Frame>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

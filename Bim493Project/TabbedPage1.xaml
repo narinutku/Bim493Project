@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:bim493project="clr-namespace:Bim493Project"
+            x:Class="Bim493Project.TabbedPage1"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            BarBackgroundColor="Wheat"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+
+    <bim493project:Search Title="Search "  IconImageSource="loupe.png" ></bim493project:Search>
+    <bim493project:TopList Title="Trending" IconImageSource="bestseller.png"></bim493project:TopList>
+    <bim493project:MainPage Title="Actors/Actress" IconImageSource="theatre.png"></bim493project:MainPage>
+</TabbedPage>
