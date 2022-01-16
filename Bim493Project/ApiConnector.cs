@@ -57,16 +57,35 @@ namespace Bim493Project
             return movies.Results;
             
         }
-        public List<SearchMovie> getTrending() {
-            SearchContainer<SearchMovie> movies = client.GetTrendingMoviesAsync(TMDbLib.Objects.Trending.TimeWindow.Week, 5).Result ;
+        public List<SearchMovie> getTrending(TMDbLib.Objects.Trending.TimeWindow type) {
+           
+                SearchContainer<SearchMovie> movies = client.GetTrendingMoviesAsync(type).Result;
+                foreach (SearchMovie item in movies.Results)
+                {
+                    item.PosterPath = main_url_for_poster + item.PosterPath;
+
+
+                }
+                return movies.Results;
+           
+            
+          
+           
+        }
+        public List<SearchMovie> allTimeHigh()
+        {
+
+            SearchContainer<SearchMovie> movies=  client.GetMovieTopRatedListAsync().Result;
             foreach (SearchMovie item in movies.Results)
             {
                 item.PosterPath = main_url_for_poster + item.PosterPath;
 
 
             }
-          
             return movies.Results;
+
+
+
         }
 
         public List<String> getGenres()

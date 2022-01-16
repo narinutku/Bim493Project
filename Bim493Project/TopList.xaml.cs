@@ -12,32 +12,33 @@ namespace Bim493Project
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TopList : ContentPage
     {
+        ApiConnector apiConnector = new ApiConnector();
         public TopList()
         {
             InitializeComponent();
-            ApiConnector apiConnector = new ApiConnector();
+           
             //  this.BindingContext=ai
-            this.BindingContext = apiConnector.getTrending();
-
-               //< pancakeView:PancakeView Margin = "30,5"
-               // Padding = "10"
-               // BackgroundColor = "Black"
+            this.BindingContext = apiConnector.getTrending(TMDbLib.Objects.Trending.TimeWindow.Week);
 
 
-               // CornerRadius = "10"
-               // HeightRequest = "48" >
+        }
 
-               // < Picker x: Name = "SearchType"  TextColor = "White"     BackgroundColor = "Black"
-               //     FontSize = "Small"  TitleColor = "White" Title = "Type" HorizontalOptions = "FillAndExpand" >
-      
-               //           < Picker.Items >
       
 
-               //           </ Picker.Items >
-      
-               //       </ Picker >
-      
-               //   </ pancakeView:PancakeView >
+        private void PickerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (PickerType.SelectedItem.ToString())
+            {
+                case "Week":
+                    this.BindingContext = apiConnector.getTrending(TMDbLib.Objects.Trending.TimeWindow.Week);
+                    break;
+                case "Day":
+                    this.BindingContext = apiConnector.getTrending(TMDbLib.Objects.Trending.TimeWindow.Day);
+                    break;
+                default:
+                    this.BindingContext = apiConnector.allTimeHigh();
+                    break;
+            }
         }
     }
 }
